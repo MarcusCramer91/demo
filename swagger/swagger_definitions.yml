@@ -1,0 +1,64 @@
+openapi: "3.0.0"
+info:
+  description: "API definition for JM"
+  version: "0.0.1"
+  title: "Jobmine"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "cramer@westphalia-datalab.com"
+paths:
+  /helloworld/greet:
+    post:
+      operationId: "src.hello_world.shout"
+      summary: "Create a new user"
+      tags: [user]
+      requestBody:
+        description: Blablabla
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelloWorldSchema'
+      responses:
+        "200":
+          description: World greeted succesfully
+  /user/create:
+    post:
+      operationId: "src.user.add"
+      tags: [user]
+      requestBody:
+        description: Blablabla
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSchema'
+      responses:
+        "200":
+          description: User added succesfully
+
+
+
+components:
+  schemas:
+    HelloWorldSchema:
+      type: "object"
+      properties:
+        message:
+          type: string
+          example: "Hello world!"
+      required:
+        - message
+
+    UserSchema:
+      type: "object"
+      properties:
+        username:
+          type: string
+          example: "Testuser"
+        password:
+          type: string
+          example: "asdf"
+      required:
+        - username
+        - password
